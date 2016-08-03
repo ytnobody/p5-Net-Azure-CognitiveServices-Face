@@ -95,4 +95,18 @@ sub update {
     $self->request($req);
 }
 
+sub _update_face_request {
+    my ($self, $person_group_id, $person_id, $persisted_face_id, %param) = @_;
+    $self->build_request(PATCH => ["$person_group_id/persons/$person_id/persistedFaces/$persisted_face_id"],
+        undef,
+        {%param},
+    );
+}
+
+sub update_face {
+    my ($self, $person_group_id, $person_id, $persisted_face_id, %param) = @_;
+    my $req = $self->_update_face_request($person_group_id, $person_id, $persisted_face_id, %param);
+    $self->request($req);
+}
+
 1;
