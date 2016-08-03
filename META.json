@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "A wrapper class for Face API of Microsoft Cognitive Services",
    "author" : [
       "ytnobody <ytnobody@gmail.com>"
    ],
@@ -52,5 +52,16 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/ytnobody/p5-Net-Microsoft-CognitiveServices-Face/issues"
+      },
+      "homepage" : "https://github.com/ytnobody/p5-Net-Microsoft-CognitiveServices-Face",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/ytnobody/p5-Net-Microsoft-CognitiveServices-Face.git",
+         "web" : "https://github.com/ytnobody/p5-Net-Microsoft-CognitiveServices-Face"
+      }
+   },
    "version" : "0.01"
 }
