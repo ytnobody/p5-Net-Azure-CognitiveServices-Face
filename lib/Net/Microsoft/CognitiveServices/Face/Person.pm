@@ -73,4 +73,15 @@ sub get_face {
     $self->request($req);
 }
 
+sub _list_request {
+    my ($self, $person_group_id) = @_;
+    $self->build_request(GET => ["$person_group_id/persons"]);
+}
+
+sub list {
+    my ($self, $person_group_id) = @_;
+    my $req = $self->_list_request($person_group_id);
+    $self->request($req);
+}
+
 1;
