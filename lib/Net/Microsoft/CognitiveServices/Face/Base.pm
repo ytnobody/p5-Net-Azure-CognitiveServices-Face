@@ -16,7 +16,7 @@ sub path {''};
 sub uri {
     my ($self, $path, %query) = @_;
     my $uri = URI->new($self->endpoint);
-    $uri->path(join('/', $self->path, $path));
+    $uri->path($path ? join('/', $self->path, $path) : $self->path);
     if (keys %query) {
         $uri->query_form(%query);
     }

@@ -64,4 +64,15 @@ sub get {
     $self->request($req);
 }
 
+sub _list_request {
+    my ($self, $face_list_id) = @_;
+    $self->build_request('GET');
+}
+
+sub list {
+    my ($self, $face_list_id) = @_;
+    my $req = $self->_list_request($face_list_id);
+    $self->request($req); 
+}
+
 1;
