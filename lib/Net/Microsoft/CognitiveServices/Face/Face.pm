@@ -54,4 +54,15 @@ sub identify {
     $self->request($req);
 }
 
+sub _verify_request {
+    my ($self, %param) = @_;
+    $self->build_request(POST => ['verify'], undef, {%param});
+}
+
+sub verify {
+    my ($self, %param) = @_;
+    my $req = $self->_verify_request(%param);
+    $self->request($req);
+}
+
 1;
