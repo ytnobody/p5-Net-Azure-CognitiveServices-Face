@@ -43,4 +43,15 @@ sub group {
     $self->request($req);
 }
 
+sub _identify_request {
+    my ($self, %param) = @_;
+    $self->build_request(POST => ['identify'], undef, {%param});
+}
+
+sub identify {
+    my ($self, %param) = @_;
+    my $req = $self->_identify_request(%param);
+    $self->request($req);
+}
+
 1;
