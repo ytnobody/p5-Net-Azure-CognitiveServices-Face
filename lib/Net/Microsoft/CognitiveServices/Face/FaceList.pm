@@ -44,12 +44,23 @@ sub delete {
 
 sub _flush_request {
     my ($self, $face_list_id) = @_;
-    $self->build_request(DELETE => ["$face_list_id/persistedFaces"]);
+    $self->build_request(DELETE => ["$face_list_id"]);
 }
 
 sub flush {
     my ($self, $face_list_id) = @_;
     my $req = $self->_flush_request($face_list_id);
+    $self->request($req);
+}
+
+sub _get_request {
+    my ($self, $face_list_id) = @_;
+    $self->build_request(GET => ["$face_list_id"]);
+}
+
+sub get {
+    my ($self, $face_list_id) = @_;
+    my $req = $self->_get_request($face_list_id);
     $self->request($req);
 }
 
