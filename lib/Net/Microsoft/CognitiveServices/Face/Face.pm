@@ -32,4 +32,15 @@ sub find_similar {
     $self->request($req);
 }
 
+sub _group_request {
+    my ($self, %param) = @_;
+    $self->build_request(POST => ['group'], undef, {%param});
+}
+
+sub group {
+    my ($self, %param) = @_;
+    my $req = $self->_group_request(%param);
+    $self->request($req);
+}
+
 1;
