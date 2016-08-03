@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use Net::Microsoft::CognitiveServices::Face::Face;
 use Net::Microsoft::CognitiveServices::Face::FaceList;
+use Net::Microsoft::CognitiveServices::Face::Person;
 
 our $VERSION  = "0.01";
 our $AUTOLOAD;
