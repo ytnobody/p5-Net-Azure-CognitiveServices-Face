@@ -50,4 +50,27 @@ sub delete_face {
     my $req = $self->build_request($person_group_id, $person_id, $persisted_face_id);
     $self->request($req);
 }
+
+sub _get_request {
+    my ($self, $person_group_id, $person_id) = @_;
+    $self->build_request(GET => ["$person_group_id/persons/$person_id"]);
+}
+
+sub get {
+    my ($self, $person_group_id, $person_id) = @_;
+    my $req = $self->_get_request($person_group_id, $person_id);
+    $self->request($req);
+}
+
+sub _get_face_request {
+    my ($self, $person_group_id, $person_id, $persisted_face_id) = @_;
+    $self->build_request(GET => ["$person_group_id/persons/$person_id/persistedFaces/$persisted_face_id"]);
+}
+
+sub get_face {
+    my ($self, $person_group_id, $person_id, $persisted_face_id) = @_;
+    my $req = $self->_get_face_request($person_group_id, $person_id, $persisted_face_id);
+    $self->request($req);
+}
+
 1;
