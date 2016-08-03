@@ -21,4 +21,15 @@ sub detect {
     $self->request($req);
 }
 
+sub _find_similar_request {
+    my ($self, %param) = @_;
+    $self->build_request(POST => ['findsimilars'], undef, {%param});
+}
+
+sub find_similar {
+    my ($self, %param) = @_;
+    my $req = $self->_find_similar_request(%param);
+    $self->request($req);
+}
+
 1;
