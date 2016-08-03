@@ -75,4 +75,15 @@ sub list {
     $self->request($req); 
 }
 
+sub _update_request {
+    my ($self, $face_list_id, %param) = @_;
+    $self->build_request(PATCH => ["$face_list_id"], undef, {%param});
+}
+
+sub update {
+    my ($self, $face_list_id, %param) = @_;
+    my $req = $self->_update_request($face_list_id);
+    $self->request($req);
+}
+
 1;
