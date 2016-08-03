@@ -84,4 +84,15 @@ sub list {
     $self->request($req);
 }
 
+sub _update_request {
+    my ($self, $person_group_id, $person_id, %param) = @_;
+    $self->build_request(PATCH => ["$person_group_id/persons/$person_id"], undef, {%param});
+}
+
+sub update {
+    my ($self, $person_group_id, $person_id, %param) = @_;
+    my $req = $self->_update_request($person_group_id, $person_id, %param);
+    $self->request($req);
+}
+
 1;
