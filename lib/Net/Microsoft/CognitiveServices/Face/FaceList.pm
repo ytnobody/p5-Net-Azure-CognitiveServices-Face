@@ -31,4 +31,26 @@ sub add {
     $self->request($req);
 }
 
+sub _delete_request {
+    my ($self, $face_list_id, $remove_face_id) = @_;
+    $self->build_request(DELETE => ["$face_list_id/persistedFaces/$remove_face_id"]);
+}
+
+sub delete {
+    my ($self, $face_list_id, $remove_face_id) = @_;
+    my $req = $self->_delete_request($face_list_id, $remove_face_id);
+    $self->request($req);
+}
+
+sub _flush_request {
+    my ($self, $face_list_id) = @_;
+    $self->build_request(DELETE => ["$face_list_id/persistedFaces"]);
+}
+
+sub flush {
+    my ($self, $face_list_id) = @_;
+    my $req = $self->_flush_request($face_list_id);
+    $self->request($req);
+}
+
 1;
