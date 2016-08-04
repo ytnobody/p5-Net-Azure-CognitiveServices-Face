@@ -37,8 +37,23 @@ sub agent {
 
 sub request {
     my ($self, $req) = @_;
-    my $res = $self->agent->request($req);
-    my $body = $self->json->decode($res->content);
+    my $res;
+    my $try = 0;
+    while (1) {
+        $res = $self->agent->request($req);
+        $try++;
+        if ($try > 10 || $res->code != 429) {
+            last;
+        }
+        carp sprintf('Retry. Because API said %s', $res->content);
+    }
+    my $body;
+    if ($res->content) {
+        if ($res->content_type !~ /application\/json/) {
+            croak($res->content); 
+        }
+        $body = $self->json->decode($res->content);
+    }
     if (!$res->is_success) {
         croak($body->{error}{message});
     }

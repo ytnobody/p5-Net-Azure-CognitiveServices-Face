@@ -62,7 +62,7 @@ sub list {
 
 sub _train_request {
     my ($self, $person_group_id) = @_;
-    $self->build_request(POST => ["$person_group_id/train"]);
+    $self->build_request(POST => ["$person_group_id/train"], undef, {body => ''});
 }
 
 sub train {
