@@ -76,6 +76,28 @@ Net::Microsoft::CognitiveServices::Face provides following subclasses.
 
 Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236> for more information. 
 
+=head1 METHODS
+
+=head2 access_key
+
+Set the access key for accessing to Microsoft Cognitive Services APIs
+
+=head2 Face
+
+Returns an instance of Net::Microsoft::CognitiveServices::Face::Face
+
+=head2 FaceList
+
+Returns an instance of Net::Microsoft::CognitiveServices::Face::FaceList
+
+=head2 Person
+
+Returns an instance of Net::Microsoft::CognitiveServices::Face::Person
+
+=head2 PersonGroup
+
+Returns an instance of Net::Microsoft::CognitiveServices::Face::PersonGroup
+
 =head1 LICENSE
 
 Copyright (C) ytnobody.

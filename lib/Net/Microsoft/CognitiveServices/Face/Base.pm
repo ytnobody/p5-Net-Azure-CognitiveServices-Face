@@ -78,3 +78,90 @@ sub build_request {
 }
 
 1;
+
+__END__
+
+=encoding utf-8
+
+=head1 NAME
+
+Net::Microsoft::CognitiveServices::Face::Base - Base class of Cognitive Services APIs
+
+=head1 DESCRIPTION
+
+This is a base class for writting wrapper classes of Face APIs more easy. 
+
+=head1 ATTRIBUTES
+
+=head2 access_key
+
+The access key for accessing to Microsoft Cognitive Services APIs
+
+=head2 endpoint
+
+Endpoint URL string
+
+=head1 METHODS
+
+=head2 path
+
+An interface that returns the endpoint path string.
+
+    my $path_string = $obj->path;
+
+=head2 uri
+
+Build an URI object.
+
+    my $uri = $obj->uri('/base/uri', name => 'foobar', page => 3); ## => '/base/uri?name=foobar&page=3'
+
+=head2 json
+
+Returns a JSON.pm object.
+
+    my $hash = $obj->json->decode('{"name":"foobar","page":3}'); ## => {name => "foobar", page => 3}
+
+=head2 agent
+
+Returns a LWP::UserAgent object.
+
+    my $res = $obj->agent->get('http://example.com');
+
+=head2 request
+
+Send a http request, and returns a json content as a hashref.
+
+    my $req  = HTTP::Request->new(...);
+    my $hash = $obj->request($req);
+
+=head2 build_headers
+
+Build and returns http headers with authorization header.
+
+    my $obj = Net::Microsoft::CognitiveServices::Face::Base->new(access_key => 'SECRET', ...);
+    my @headers = $obj->build_headers('Content-Length' => 60);
+
+=head2 build_request
+
+Build and returns a HTTP::Request object.
+
+    ### arguments
+    my $path      = '/foo/bar';
+    my %param     = (page => 2, name => 'hoge');
+    my @headers   = ("X-HTTP-Foobar" => 123);
+    my $json_data = {url => 'http://example.com'};
+    ### build request object
+    my $req = $obj->build_request([$path, %param], [@headers], $json_data);
+
+=head1 LICENSE
+
+Copyright (C) ytnobody.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=head1 AUTHOR
+
+ytnobody E<lt>ytnobody@gmail.comE<gt>
+
+=cut
