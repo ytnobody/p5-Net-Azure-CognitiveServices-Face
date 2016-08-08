@@ -65,13 +65,13 @@ sub get {
 }
 
 sub _list_request {
-    my ($self, $face_list_id) = @_;
+    my ($self) = @_;
     $self->build_request('GET');
 }
 
 sub list {
-    my ($self, $face_list_id) = @_;
-    my $req = $self->_list_request($face_list_id);
+    my ($self) = @_;
+    my $req = $self->_list_request;
     $self->request($req); 
 }
 
@@ -94,86 +94,81 @@ __END__
 
 =head1 NAME
 
-Net::Microsoft::CognitiveServices::Face::Face - Face API class of Cognitive Services API
+Net::Microsoft::CognitiveServices::Face::FaceList - Face List API class of Cognitive Services API
 
 =head1 DESCRIPTION
 
-Face API wrapper.
+Face List API wrapper.
 
 =head1 METHODS
 
-=head2 detect
+=head2 create
 
-Send "Detect" request and fetch result as arrayref.
+Send "Create a Face List" request.
 
-    my $result = $obj->detect($image_url, 
-        returnFaceAttributes => ['age', 'gender'],
-        returnFaceLandmarks  => 'true',
-    );
-    say join "\n", map { $_->{faceId} } @$result; ## output faceId list
-
-Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236> for detail.
-
-=head2 find_similar
-
-Send "Find Similar" request and fetch result as arrayref.
-
-    my $result = $obj->find_similar(
-        faceId                     => "c5c24a82-6845-4031-9d5d-978df9175426",
-        faceListId                 => "sample_list",  
-        maxNumOfCandidatesReturned => 10,
-        mode                       => "matchPerson"
-    );
-    say join "\n", map {$_->{persistedFaceId}} @$result; ## output persistedFaceId list
-
-Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237> for detail.
-
-=head2 group
-
-Send "Group" request and fetch result as hashref.
-
-    my $result = $obj->find_similar(
-        faceIds => [
-            "c5c24a82-6845-4031-9d5d-978df9175426",
-            "015839fb-fbd9-4f79-ace9-7675fc2f1dd9",
-            "65d083d4-9447-47d1-af30-b626144bf0fb",
-            "fce92aed-d578-4d2e-8114-068f8af4492e",
-            "30ea1073-cc9e-4652-b1e3-d08fb7b95315",
-            "be386ab3-af91-4104-9e6d-4dae4c9fddb7",
-            "fbd2a038-dbff-452c-8e79-2ee81b1aa84e",
-            "b64d5e15-8257-4af2-b20a-5a750f8940e7",
-        ],
+    $obj->create($face_list_id, 
+        name     => 'my_face_list',
+        userData => 'created_date:2016-08-01',
     );
 
-Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238> for detail.
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b> for detail.
 
-=head2 identify
+=head2 add
 
-Send "Identify" request and fetch result as hashref.
+Send "Add a Face to Face List" request and fetch result as hashref.
 
-    my $result = $obj->identify(
-        faceIds => [
-            "c5c24a82-6845-4031-9d5d-978df9175426",
-            "65d083d4-9447-47d1-af30-b626144bf0fb"
-        ],
-        personGroupId              => sample_group",
-        maxNumOfCandidatesReturned => 1,
-        confidenceThreshold        => 0.5
+    my $result = $obj->add($face_list_id, $image_url,
+        userData   => 'added_date:2016-08-01',
+        targetFace => '10,10,100,100',
+    );
+    say $result->{persistedFaceId}; ## output persistedFaceId
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250> for detail.
+
+=head2 delete
+
+Send "Delete a Face from Face List" request.
+
+    $obj->delete($face_list_id, $remove_face_id);
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395251> for detail.
+
+=head2 flush
+
+Send "Delete a Face List" request.
+
+    my $result = $obj->flush($face_list_id);
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524f> for detail.
+
+=head2 get
+
+Send "Get a Face List" request and fetch result as hashref.
+
+    my $result = $obj->get($face_list_id);
+    say $result->{name}; ## output Face List name
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c> for detail.
+
+=head2 list
+
+Send "List Face Lists" request and fetch result as arrayref.
+
+    my $result = $obj->list;
+    say join("%s\n", map {$_->{faceListId}} @$result); ## output list of faceListId
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524d> for detail.
+
+=head2 update 
+
+Send "Update a Face List" request.
+
+    $obj->update($face_list_id,
+        name     => 'new Face List Name',
+        userData => 'update:2016-08-01',  
     );
 
-Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239> for detail.
-
-=head2 verify
-
-Send "Verify" request and fetch result as hashref.
-
-    my $result = $obj->verify(
-        faceId        => "c5c24a82-6845-4031-9d5d-978df9175426",
-        peronId       => "815df99c-598f-4926-930a-a734b3fd651c",
-        personGroupId => "sample_group"
-    );
-
-Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a> for detail.
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524e> for detail.
 
 =head1 LICENSE
 

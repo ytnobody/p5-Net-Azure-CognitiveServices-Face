@@ -83,3 +83,95 @@ sub update {
 }
 
 1;
+
+__END__
+
+=encoding utf-8
+
+=head1 NAME
+
+Net::Microsoft::CognitiveServices::Face::PersonGroup - Person Group API class of Cognitive Services API
+
+=head1 DESCRIPTION
+
+Person Group API wrapper.
+
+=head1 METHODS
+
+=head2 create
+
+Send "Create a Person Group" request.
+
+    $obj->create($person_group_id, 
+        name     => 'Capitalists in America',
+        userData => 'created_date:2016-08-01',
+    );
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244> for detail.
+
+=head2 delete
+
+Send "Delete a Person Group" request.
+
+    $obj->delete($person_group_id);
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395245> for detail.
+
+=head2 get
+
+Send "Get a Person Group" request and fetch result as hashref.
+
+    say $result->{name}; ## output name of Person Group
+    my $result = $obj->get($person_group_id);
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246> for detail.
+
+=head2 training_status
+
+Send "Get Person Group Training Status" request and fetch result as hashref.
+
+    my $result = $obj->training_status($person_group_id);
+    say $result->{status}; ## output training status of Person Group
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247> for detail.
+
+=head2 list
+
+Send "List Person Groups" request and fetch result as arrayref.
+
+    my $result = $obj->list(start => 5, top => 10);
+    say join("%s\n", map {$_->{name}} @$result); ## output name list of Person Groups 
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395248> for detail.
+
+=head2 train
+
+Send "Train Person Group" request.
+
+    $obj->train($person_group_id);
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249> for detail.
+
+=head2 update
+
+Send "Update a Person Group" request.
+
+    $obj->update($person_group_id, 
+        name     => 'new Group Name',
+        userData => 'update:2016-08-01', 
+    );
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524a> for detail.
+
+=head1 LICENSE
+
+Copyright (C) ytnobody.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=head1 AUTHOR
+
+ytnobody E<lt>ytnobody@gmail.comE<gt>
+
+=cut

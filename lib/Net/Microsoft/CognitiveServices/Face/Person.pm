@@ -110,3 +110,117 @@ sub update_face {
 }
 
 1;
+
+__END__
+
+=encoding utf-8
+
+=head1 NAME
+
+Net::Microsoft::CognitiveServices::Face::Person - Person API class of Cognitive Services API
+
+=head1 DESCRIPTION
+
+Person API wrapper.
+
+=head1 METHODS
+
+=head2 add_face
+
+Send "Add a Person Face" request.
+
+    $obj->add_face($person_group_id, $person_id, $image_url, 
+        userData   => 'created_date:2016-08-01',
+        targetFace => '10,10,100,100', 
+    );
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b> for detail.
+
+=head2 create
+
+Send "Creaet a Person" request and fetch result as arrayref.
+
+    my $result = $obj->create($person_group_id,
+        name     => "Donard Trump",
+        userData => "created_date:2016-08-01",
+    );
+    say $result->{personId} ## output personId
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c> for detail.
+
+=head2 delete
+
+Send "Delete a Person" request.
+
+    $obj->delete($person_group_id, $person_id);
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523d> for detail.
+
+=head2 delete_face
+
+Send "Delete a Person Face" request.
+
+    $obj->delete_face($person_group_id, $person_id, $persisted_face_id);
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e> for detail.
+
+=head2 get
+
+Send "Get a Person" request and fetch result as hashref.
+
+    my $result = $obj->get($person_group_id, $person_id);
+    say $result->{personId}; ## output personId
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523f> for detail.
+
+=head2 get_face
+
+Send "Get a Person Face" request and fetch result as hashref.
+
+    my $result = $obj->get_face($person_group_id, $person_id, $persisted_face_id);
+    say $result->{persistedFaceId}; ## output persistedFaceId
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395240> for detail.
+
+=head2 list
+
+Send "List Persons in a Person Group" request and fetch result as arrayref.
+
+    my $result = $obj->list($person_group_id);
+    say join("%s\n", map {$_->{personId}} @$result); ## output list of personId
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241> for detail.
+
+=head2 update
+
+Send "Update a Person" request.
+
+    $obj->update($person_group_id, $person_id,
+        name     => "Hillary Clinton",
+        userData => "update:2016-08-01",
+    );
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395242> for detail.
+
+=head2 update_face
+
+Send "Update a Person Face" request.
+
+    $obj->update_face($person_group_id, $person_id, $persisted_face_id,
+        userData => "update:2016-08-01",
+    );
+
+Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395243> for detail.
+
+=head1 LICENSE
+
+Copyright (C) ytnobody.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=head1 AUTHOR
+
+ytnobody E<lt>ytnobody@gmail.comE<gt>
+
+=cut
