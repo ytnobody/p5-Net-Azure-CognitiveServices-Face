@@ -3,13 +3,13 @@ use warnings;
 use Net::Microsoft::CognitiveServices::Face;
 use Guard 'guard';
 
-### 長い名前のモジュールなので、簡単に呼べるように変数に代入
+### more shortly
 my $api = 'Net::Microsoft::CognitiveServices::Face';
 
-### アクセスキーの登録
+### add access_key string
 $api->access_key($ARGV[0]);
 
-### 有名人の元データ
+### Source data of Japanese popular persons
 my %image = (
     'Yo Ooizumi'        => 'http://s3-ap-northeast-1.amazonaws.com/topicks/article_thumb/15584_original.jpg',
     'Takayuki Suzui'    => 'https://www.office-cue.com/image/portrait/xl_talent01.jpg',
@@ -18,38 +18,38 @@ my %image = (
     'Hiroyuki Morisaki' => 'http://www.suruga-ya.jp/database/pics/game/g6235130.jpg',
 );
 
-### PersonGroup IDの定義
+### Definition of PersonGroup ID
 my $person_group_id = 'dummy';
 
-### すべての処理が終わったら PersonGroupごと削除する
+### Remove the PersonGroup when finished each tasks
 my $guard = guard {
     $api->PersonGroup->delete($person_group_id)
 };
 
-### PersonGroupの作成
+### Create the PersonGroup
 $api->PersonGroup->create($person_group_id, name => 'Super Star');
 
-### 有名人を認識させる
+### Register persons to Face API
 for my $name (keys %image) {
-    sleep 1; ## Request Rate Limit に引っかからないように頑張る
+    sleep 1; ## Care for Request Rate Limit
     my $person = $api->Person->create($person_group_id, name => $name);
     $api->Person->add_face($person_group_id, $person->{personId}, $image{$name});
 }
 
-### PersonGroupに学習をさせる
+### Train the PersonGroup
 $api->PersonGroup->train($person_group_id);
 
-### 学習が終わるのを待つ。
+### Wait a moment to finish training...
 for (1 .. 12) {
     sleep 5;
     my $status = $api->PersonGroup->training_status($person_group_id);
     last if $status->{status} eq "succeeded";
 }
 
-### 大泉洋の顔画像（元データとは別のデータ）を食わせて、faceIdを取得する
+### Detect a face image of "Yo Ooizumi", and fetch it's faceId.  
 my $face = $api->Face->detect('http://www.officiallyjd.com/wp-content/uploads/2012/02/20120227_akb_13.jpg');
 
-### 取得できたfaceIdを元に、顔画像マッチングを行う。
+### Identify the face image from PersonGroup by faceId
 my $ident = $api->Face->identify(
     faceIds                    => [ $face->[0]{faceId} ],
     personGroupId              => $person_group_id,
@@ -57,12 +57,13 @@ my $ident = $api->Face->identify(
     confidenceThreshold        => 0.5,
 );
 
-### faceIdにマッチした顔画像中から、personIdを含むObjectを引っ張ってくる
+### Fetch a candidated data
 my $candidate = $ident->[0]{candidates}[0];
 
-### personIdを元にpersonデータを取得する
+
+### Get a person data by candidated personId
 my $hit = $api->Person->get($person_group_id, $candidate->{personId});
 
-### personデータを吐き出す
+### output a person data
 use Data::Dumper;
 warn Dumper($hit);
