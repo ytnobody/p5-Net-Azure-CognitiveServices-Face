@@ -5,6 +5,7 @@ requires 'JSON';
 requires 'Carp';
 requires 'URI';
 requires 'HTTP::Request';
+requires 'LWP::Protocol::https';
 
 on 'test' => sub {
     requires 'Test::More', '0.98';
