@@ -1,4 +1,0 @@
-name = "Net-Microsoft-CognitiveServices-Face"
-# badges = ["travis"]
-module_maker="ModuleBuildTiny"
-

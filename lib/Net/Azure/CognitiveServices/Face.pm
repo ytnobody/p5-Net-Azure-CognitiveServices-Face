@@ -35,15 +35,15 @@ __END__
 
 =head1 NAME
 
-Net::Microsoft::CognitiveServices::Face - A wrapper class for Face API of Microsoft Cognitive Services
+Net::Azure::CognitiveServices::Face - A wrapper class for Face API of Azure Cognitive Services
 
 =head1 SYNOPSIS
 
-    use Net::Microsoft::CognitiveServices::Face;
-    Net::Microsoft::CognitiveServices::Face->access_key('YOUR_ACCESS_KEY');
+    use Net::Azure::CognitiveServices::Face;
+    Net::Azure::CognitiveServices::Face->access_key('YOUR_ACCESS_KEY');
 
     ### Face - Detect
-    my $face_api = Net::Microsoft::CognitiveServices::Face->Face;
+    my $face_api = Net::Azure::CognitiveServices::Face->Face;
     my $result = $face_api->detect(
         "http://example.com/photo.jpg", 
         returnFaceAttributes => ['age', 'gender'],
@@ -51,7 +51,7 @@ Net::Microsoft::CognitiveServices::Face - A wrapper class for Face API of Micros
     printf "age: %d, gender: %d\n", $result->[0]{faceAttributes}{age}, $result->[0]{faceAttributes}{gender};
     
     ### Person - List Persons in a PersonGroup
-    my $person_api = Net::Microsoft::CognitiveServices::Face->Person;
+    my $person_api = Net::Azure::CognitiveServices::Face->Person;
     $result = $person_api->list('my_person_group');
     for my $person (@$result) {
         printf "name: %s, personId: %s\n", $person->{name}, $person->{personId};
@@ -60,17 +60,17 @@ Net::Microsoft::CognitiveServices::Face - A wrapper class for Face API of Micros
 
 =head1 DESCRIPTION
 
-Net::Microsoft::CognitiveServices::Face provides following subclasses.
+Net::Azure::CognitiveServices::Face provides following subclasses.
 
 =over 4
 
-=item Net::Microsoft::CognitiveServices::Face::Face
+=item Net::Azure::CognitiveServices::Face::Face
 
-=item Net::Microsoft::CognitiveServices::Face::FaceList
+=item Net::Azure::CognitiveServices::Face::FaceList
 
-=item Net::Microsoft::CognitiveServices::Face::Person
+=item Net::Azure::CognitiveServices::Face::Person
 
-=item Net::Microsoft::CognitiveServices::Face::PersonGroup
+=item Net::Azure::CognitiveServices::Face::PersonGroup
 
 =back 
 
@@ -80,23 +80,23 @@ Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d
 
 =head2 access_key
 
-Set the access key for accessing to Microsoft Cognitive Services APIs
+Set the access key for accessing to Azure Cognitive Services APIs
 
 =head2 Face
 
-Returns an instance of Net::Microsoft::CognitiveServices::Face::Face
+Returns an instance of Net::Azure::CognitiveServices::Face::Face
 
 =head2 FaceList
 
-Returns an instance of Net::Microsoft::CognitiveServices::Face::FaceList
+Returns an instance of Net::Azure::CognitiveServices::Face::FaceList
 
 =head2 Person
 
-Returns an instance of Net::Microsoft::CognitiveServices::Face::Person
+Returns an instance of Net::Azure::CognitiveServices::Face::Person
 
 =head2 PersonGroup
 
-Returns an instance of Net::Microsoft::CognitiveServices::Face::PersonGroup
+Returns an instance of Net::Azure::CognitiveServices::Face::PersonGroup
 
 =head1 LICENSE
 

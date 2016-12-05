@@ -85,7 +85,7 @@ __END__
 
 =head1 NAME
 
-Net::Microsoft::CognitiveServices::Face::Base - Base class of Cognitive Services APIs
+Net::Azure::CognitiveServices::Face::Base - Base class of Cognitive Services APIs
 
 =head1 DESCRIPTION
 
@@ -95,7 +95,7 @@ This is a base class for writting wrapper classes of Face APIs more easy.
 
 =head2 access_key
 
-The access key for accessing to Microsoft Cognitive Services APIs
+The access key for accessing to Azure Cognitive Services APIs
 
 =head2 endpoint
 
@@ -138,7 +138,7 @@ Send a http request, and returns a json content as a hashref.
 
 Build and returns http headers with authorization header.
 
-    my $obj = Net::Microsoft::CognitiveServices::Face::Base->new(access_key => 'SECRET', ...);
+    my $obj = Net::Azure::CognitiveServices::Face::Base->new(access_key => 'SECRET', ...);
     my @headers = $obj->build_headers('Content-Length' => 60);
 
 =head2 build_request

@@ -73,7 +73,7 @@ __END__
 
 =head1 NAME
 
-Net::Microsoft::CognitiveServices::Face::Face - Face API class of Cognitive Services API
+Net::Azure::CognitiveServices::Face::Face - Face API class of Cognitive Services API
 
 =head1 DESCRIPTION
 

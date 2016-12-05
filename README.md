@@ -1,6 +1,6 @@
 # NAME
 
-Net::Azure::CognitiveServices::Face - A wrapper class for Face API of Microsoft Cognitive Services
+Net::Azure::CognitiveServices::Face - A wrapper class for Face API of Azure Cognitive Services
 
 # SYNOPSIS
 
@@ -37,7 +37,7 @@ Please see [https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/
 
 ## access\_key
 
-Set the access key for accessing to Microsoft Cognitive Services APIs
+Set the access key for accessing to Azure Cognitive Services APIs
 
 ## Face
 

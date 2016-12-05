@@ -117,7 +117,7 @@ __END__
 
 =head1 NAME
 
-Net::Microsoft::CognitiveServices::Face::Person - Person API class of Cognitive Services API
+Net::Azure::CognitiveServices::Face::Person - Person API class of Cognitive Services API
 
 =head1 DESCRIPTION
 
