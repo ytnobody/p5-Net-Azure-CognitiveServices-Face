@@ -1,11 +1,11 @@
 use strict;
 use warnings;
 use Test::More;
-use Net::Microsoft::CognitiveServices::Face;
+use Net::Azure::CognitiveServices::Face;
 
-Net::Microsoft::CognitiveServices::Face->access_key('MYSECRET');
-my $pg = Net::Microsoft::CognitiveServices::Face->PersonGroup;
-isa_ok $pg, 'Net::Microsoft::CognitiveServices::Face::PersonGroup';
+Net::Azure::CognitiveServices::Face->access_key('MYSECRET');
+my $pg = Net::Azure::CognitiveServices::Face->PersonGroup;
+isa_ok $pg, 'Net::Azure::CognitiveServices::Face::PersonGroup';
 can_ok $pg, qw/_train_request/;
 
 my $req = $pg->_train_request('machida_pm');

@@ -1,0 +1,87 @@
+{
+   "abstract" : "A wrapper class for Face API of Microsoft Cognitive Services",
+   "author" : [
+      "ytnobody <ytnobody@gmail.com>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Minilla/v2.4.1",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Net-Microsoft-CognitiveServices-Face",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "xt",
+         "inc",
+         "share",
+         "eg",
+         "examples",
+         "author",
+         "builder"
+      ]
+   },
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "Module::Build::Tiny" : "0.035"
+         }
+      },
+      "develop" : {
+         "requires" : {
+            "Test::CPAN::Meta" : "0",
+            "Test::MinimumVersion::Fast" : "0.04",
+            "Test::PAUSE::Permissions" : "0.04",
+            "Test::Pod" : "1.41",
+            "Test::Spellunker" : "v0.2.7"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "perl" : "5.008001"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test::More" : "0.98"
+         }
+      }
+   },
+   "provides" : {
+      "Net::Microsoft::CognitiveServices::Face" : {
+         "file" : "lib/Net/Microsoft/CognitiveServices/Face.pm",
+         "version" : "0.01"
+      },
+      "Net::Microsoft::CognitiveServices::Face::Base" : {
+         "file" : "lib/Net/Microsoft/CognitiveServices/Face/Base.pm"
+      },
+      "Net::Microsoft::CognitiveServices::Face::Face" : {
+         "file" : "lib/Net/Microsoft/CognitiveServices/Face/Face.pm"
+      },
+      "Net::Microsoft::CognitiveServices::Face::FaceList" : {
+         "file" : "lib/Net/Microsoft/CognitiveServices/Face/FaceList.pm"
+      },
+      "Net::Microsoft::CognitiveServices::Face::Person" : {
+         "file" : "lib/Net/Microsoft/CognitiveServices/Face/Person.pm"
+      },
+      "Net::Microsoft::CognitiveServices::Face::PersonGroup" : {
+         "file" : "lib/Net/Microsoft/CognitiveServices/Face/PersonGroup.pm"
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/ytnobody/p5-Net-Microsoft-CognitiveServices-Face/issues"
+      },
+      "homepage" : "https://github.com/ytnobody/p5-Net-Microsoft-CognitiveServices-Face",
+      "repository" : {
+         "url" : "git://github.com/ytnobody/p5-Net-Microsoft-CognitiveServices-Face.git",
+         "web" : "https://github.com/ytnobody/p5-Net-Microsoft-CognitiveServices-Face"
+      }
+   },
+   "version" : "0.01"
+}

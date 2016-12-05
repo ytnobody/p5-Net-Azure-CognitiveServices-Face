@@ -1,10 +1,10 @@
 use strict;
 use warnings;
-use Net::Microsoft::CognitiveServices::Face;
+use Net::Azure::CognitiveServices::Face;
 use Guard 'guard';
 
 ### more shortly
-my $api = 'Net::Microsoft::CognitiveServices::Face';
+my $api = 'Net::Azure::CognitiveServices::Face';
 
 ### add access_key string
 $api->access_key($ARGV[0]);

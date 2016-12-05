@@ -1,11 +1,11 @@
 use strict;
 use warnings;
 use Test::More;
-use Net::Microsoft::CognitiveServices::Face;
+use Net::Azure::CognitiveServices::Face;
 
-Net::Microsoft::CognitiveServices::Face->access_key('MYSECRET');
-my $facelist = Net::Microsoft::CognitiveServices::Face->FaceList;
-isa_ok $facelist, 'Net::Microsoft::CognitiveServices::Face::FaceList';
+Net::Azure::CognitiveServices::Face->access_key('MYSECRET');
+my $facelist = Net::Azure::CognitiveServices::Face->FaceList;
+isa_ok $facelist, 'Net::Azure::CognitiveServices::Face::FaceList';
 can_ok $facelist, qw/_delete_request/;
 
 my $req = $facelist->_delete_request('my_facelist', 'foobar');

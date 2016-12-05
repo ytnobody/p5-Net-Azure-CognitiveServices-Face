@@ -1,11 +1,11 @@
 use strict;
 use warnings;
 use Test::More;
-use Net::Microsoft::CognitiveServices::Face;
+use Net::Azure::CognitiveServices::Face;
 
-Net::Microsoft::CognitiveServices::Face->access_key('MYSECRET');
-my $person = Net::Microsoft::CognitiveServices::Face->Person;
-isa_ok $person, 'Net::Microsoft::CognitiveServices::Face::Person';
+Net::Azure::CognitiveServices::Face->access_key('MYSECRET');
+my $person = Net::Azure::CognitiveServices::Face->Person;
+isa_ok $person, 'Net::Azure::CognitiveServices::Face::Person';
 can_ok $person, qw/_add_face_request/;
 
 my $img = 'http://example.com/hoge.jpg';

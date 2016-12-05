@@ -1,0 +1,4 @@
+#!/Users/azuma.satoshi/.plenv/versions/5.22/bin/perl5.22.0
+
+use Module::Build::Tiny;
+Build();

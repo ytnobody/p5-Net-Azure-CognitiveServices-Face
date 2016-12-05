@@ -1,11 +1,11 @@
 use strict;
 use warnings;
 use Test::More;
-use Net::Microsoft::CognitiveServices::Face;
+use Net::Azure::CognitiveServices::Face;
 
-Net::Microsoft::CognitiveServices::Face->access_key('MYSECRET');
-my $face = Net::Microsoft::CognitiveServices::Face->Face;
-isa_ok $face, 'Net::Microsoft::CognitiveServices::Face::Face';
+Net::Azure::CognitiveServices::Face->access_key('MYSECRET');
+my $face = Net::Azure::CognitiveServices::Face->Face;
+isa_ok $face, 'Net::Azure::CognitiveServices::Face::Face';
 can_ok $face, qw/_group_request/;
 
 my $req = $face->_group_request(
