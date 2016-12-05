@@ -61,13 +61,13 @@
    "release_status" : "unstable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/ytnobody/p5-Net-Microsoft-CognitiveServices-Face/issues"
+         "web" : "https://github.com/ytnobody/p5-Net-Azure-CognitiveServices-Face/issues"
       },
-      "homepage" : "https://github.com/ytnobody/p5-Net-Microsoft-CognitiveServices-Face",
+      "homepage" : "https://github.com/ytnobody/p5-Net-Azure-CognitiveServices-Face",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/ytnobody/p5-Net-Microsoft-CognitiveServices-Face.git",
-         "web" : "https://github.com/ytnobody/p5-Net-Microsoft-CognitiveServices-Face"
+         "url" : "git://github.com/ytnobody/p5-Net-Azure-CognitiveServices-Face.git",
+         "web" : "https://github.com/ytnobody/p5-Net-Azure-CognitiveServices-Face"
       }
    },
    "version" : "0.01"
