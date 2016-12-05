@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/ytnobody/p5-Net-Azure-CognitiveServices-Face.svg?branch=master)](https://travis-ci.org/ytnobody/p5-Net-Azure-CognitiveServices-Face)
 # NAME
 
 Net::Azure::CognitiveServices::Face - A wrapper class for Face API of Azure Cognitive Services
