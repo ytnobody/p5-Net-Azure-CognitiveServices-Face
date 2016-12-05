@@ -1,4 +1,4 @@
 name = "Net-Azure-CognitiveServices-Face"
-# badges = ["travis"]
+badges = ["travis"]
 module_maker="ModuleBuildTiny"
 
