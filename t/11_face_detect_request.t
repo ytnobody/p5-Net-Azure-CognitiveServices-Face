@@ -11,7 +11,7 @@ can_ok $face, qw/_detect_request/;
 my $img = 'http://example.com/hoge.jpg';
 my $req = $face->_detect_request($img, returnFaceAttributes => ['age', 'gender']);
 isa_ok $req, 'HTTP::Request';
-like $req->uri, qr|^https://api.projectoxford.ai/face/v1.0/detect|;
+like $req->uri, qr|^https://westus.api.cognitive.microsoft.com/face/v1.0/detect|;
 like $req->uri, qr|returnFaceId=true|;
 like $req->uri, qr|returnFaceLandmarks=false|;
 like $req->uri, qr|returnFaceAttributes=age%2Cgender|;

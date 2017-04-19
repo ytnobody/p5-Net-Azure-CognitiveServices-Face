@@ -11,7 +11,7 @@ our $VERSION  = "0.01";
 our $AUTOLOAD;
 our $INSTANCES = {};
 our $ACCESS_KEY;
-our $ENDPOINT = 'https://api.projectoxford.ai';
+our $ENDPOINT = 'https://westus.api.cognitive.microsoft.com';
 
 sub access_key {
     my ($class, $key) = @_;
