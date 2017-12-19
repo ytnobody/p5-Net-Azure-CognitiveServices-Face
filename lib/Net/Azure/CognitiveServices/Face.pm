@@ -83,7 +83,7 @@ Net::Azure::CognitiveServices::Face provides following subclasses.
 
 =back 
 
-Please see L<https://dev.projectoxford.ai/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236> for more information. 
+Please see L<https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236> for more information. 
 
 =head1 METHODS
 
