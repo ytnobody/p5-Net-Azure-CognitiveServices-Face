@@ -1,5 +1,4 @@
 requires 'perl', '5.008001';
-requires 'Class::Accessor::Lite';
 requires 'JSON';
 requires 'Carp';
 requires 'URI';

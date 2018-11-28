@@ -1,14 +1,18 @@
 package Net::Azure::CognitiveServices::Face::Base;
 use strict;
 use warnings;
-use Class::Accessor::Lite (
-    new => 1,
-    ro  => [qw[access_key endpoint]],
-);
 use HTTP::Tiny;
 use JSON;
 use Carp;
 use URI;
+
+sub new {
+    my ($class, %opts) = @_;
+    return bless {%opts}, $class;
+}
+
+sub access_key {shift->{access_key}}
+sub endpoint {shift->{endpoint}}
 
 sub path {''};
 

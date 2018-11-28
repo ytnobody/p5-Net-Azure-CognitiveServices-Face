@@ -43,11 +43,8 @@
       "runtime" : {
          "requires" : {
             "Carp" : "0",
-            "Class::Accessor::Lite" : "0",
-            "HTTP::Request" : "0",
+            "HTTP::Tiny" : "0",
             "JSON" : "0",
-            "LWP::Protocol::https" : "0",
-            "LWP::UserAgent" : "0",
             "URI" : "0",
             "perl" : "5.008001"
          }
@@ -72,7 +69,7 @@
    },
    "version" : "0.02",
    "x_contributors" : [
-      "azuma.satoshi <azuma.satoshi@colon.ne.jp>"
+      "sazuma <azuma.satoshi@colon.ne.jp>"
    ],
    "x_serialization_backend" : "JSON::PP version 2.97001",
    "x_static_install" : 1
