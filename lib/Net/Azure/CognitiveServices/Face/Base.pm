@@ -5,11 +5,10 @@ use Class::Accessor::Lite (
     new => 1,
     ro  => [qw[access_key endpoint]],
 );
-use LWP::UserAgent;
+use HTTP::Tiny;
 use JSON;
 use Carp;
 use URI;
-use HTTP::Request;
 
 sub path {''};
 
@@ -31,7 +30,7 @@ sub json {
 
 sub agent {
     my $self = shift;
-    $self->{agent} ||= LWP::UserAgent->new(agent => __PACKAGE__, timeout => 60);
+    $self->{agent} ||= HTTP::Tiny->new(agent => __PACKAGE__, timeout => 60);
     $self->{agent};
 }
 
@@ -40,19 +39,19 @@ sub request {
     my $res;
     my $try = 0;
     while (1) {
-        $res = $self->agent->request($req);
+        $res = $self->agent->request(@$req);
         $try++;
-        if ($try > 10 || $res->code != 429) {
+        if ($try > 10 || $res->{status} != 429) {
             last;
         }
-        carp sprintf('Retry. Because API said %s', $res->content);
+        carp sprintf('Retry. Because API said %s', $res->{content});
     }
     my $body;
-    if ($res->content) {
-        if ($res->content_type !~ /application\/json/) {
-            croak($res->content); 
+    if ($res->{content}) {
+        if ($res->{headers}{'Content-Type'} !~ /application\/json/) {
+            croak($res->{content}); 
         }
-        $body = $self->json->decode($res->content);
+        $body = $self->json->decode($res->{content});
     }
     if (!$res->is_success) {
         croak($body->{error}{message});
@@ -62,19 +61,19 @@ sub request {
 
 sub build_headers {
     my ($self, @headers) = @_;
-    (
+    {
         "Content-Type"              => "application/json", 
         "Ocp-Apim-Subscription-Key" => $self->access_key,
         @headers, 
-    );
+    };
 }
 
 sub build_request {
     my ($self, $method, $uri_param, $header, $hash) = @_;
     my $uri  = $self->uri(@$uri_param);
     my $body = $hash ? $self->json->encode($hash) : undef;
-    my @headers = $self->build_headers(defined $header ? @$header : ());
-    HTTP::Request->new($method => $uri, [@headers], $body);
+    my $headers = $self->build_headers(defined $header ? @$header : ());
+    return [$method, $uri, {headers => $headers, content => $body}];
 }
 
 1;
