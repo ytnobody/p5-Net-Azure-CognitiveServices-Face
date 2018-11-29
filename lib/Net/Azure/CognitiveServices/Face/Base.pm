@@ -126,7 +126,7 @@ Returns a JSON.pm object.
 
 =head2 agent
 
-Returns a LWP::UserAgent object.
+Returns a HTTP::Tiny object.
 
     my $res = $obj->agent->get('http://example.com');
 
@@ -134,7 +134,15 @@ Returns a LWP::UserAgent object.
 
 Send a http request, and returns a json content as a hashref.
 
-    my $req  = HTTP::Request->new(...);
+    my $method = 'POST';
+    my $uri = "https://example.com/endpoint/to/face-api?parameter=foo&other=bar";
+    my $options = {
+        headers => {
+            'Content-Type': 'application/json',
+        }, 
+        content => '{"key": "value", "key2": "value2"}',
+    };
+    my $req  = [$method, $uri, $options];
     my $hash = $obj->request($req);
 
 =head2 build_headers
